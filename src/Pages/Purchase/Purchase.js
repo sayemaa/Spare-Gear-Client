@@ -124,7 +124,7 @@ const Purchase = () => {
                                     type="number" {...register("phone")}
                                     required />
                                 <textarea
-                                    className='h-32 w-full input input-bordered mb-2'
+                                    className='h-32 textarea w-full input input-bordered mb-2'
                                     placeholder="Address"
                                     type="text" {...register("address")}
                                     required />

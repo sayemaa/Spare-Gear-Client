@@ -6,17 +6,17 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('reviews.json')
+        fetch('http://localhost:5000/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
 
     return (
-        <section className='my-28 max-w-7xl mx-auto px-6' >
+        <section className='mb-32  max-w-7xl mx-auto px-6' >
             <div className='flex justify-between'>
                 <div>
                     <h4 className="text-xl text-accent font-bold mb-3">Testimonials</h4>
-                    <h2 className='text-3xl text-primary'>What Our Customer Says</h2>
+                    <h2 className='text-3xl text-secondary'>What Our Customer Says</h2>
                 </div>
                 <div>
                     <img className='lg:w-48 w-24' src={quote} alt="" />

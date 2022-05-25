@@ -2,22 +2,22 @@
     {
         "_id": "1",
         "name": "Patrick Murray",
-        "picture": "https://randomuser.me/api/portraits/men/22.jpg",
-        "post": "Every product I ordered from here functions perfectly and is well received.",
-        "ratings": "5/5"
+        "image": "https://randomuser.me/api/portraits/men/22.jpg",
+        "userReview": "Every product I ordered from here functions perfectly and is well received.",
+        "rating": "5/5"
     },
     {
         "_id": "2",
         "name": "Ervin Howell",
-        "picture": "https://randomuser.me/api/portraits/men/9.jpg",
-        "post": "Excellent products, price and service. Arrived promptly.",
-        "ratings": "5/5"
+        "image": "https://randomuser.me/api/portraits/men/9.jpg",
+        "userReview": "Excellent products, price and service. Arrived promptly.",
+        "rating": "5/5"
     },
     {
         "_id": "3",
         "name": "Samuel Karlsson",
-        "picture": "https://randomuser.me/api/portraits/men/11.jpg",
-        "post": "I can find all the parts of a motorcycle from here, and they are of excellent quality.",
-        "ratings": "4.9/5"
+        "image": "https://randomuser.me/api/portraits/men/11.jpg",
+        "userReview": "I can find all the parts of a motorcycle from here, and they are of excellent quality.",
+        "rating": "4.9/5"
     }
 ]

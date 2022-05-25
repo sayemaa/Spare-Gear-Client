@@ -32,9 +32,9 @@ const Parts = () => {
                         refetch={refetch}
                     />)
                 }
-                <div>
-                    <button onClick={handleSeeMore} className="btn btn-ghost text-2xl text-primary font-semibold mt-5">See more<FontAwesomeIcon className='px-2' icon={faArrowRight}></FontAwesomeIcon></button>
-                </div>
+            </div>
+            <div className='flex justify-center mt-10'>
+                <button onClick={handleSeeMore} className="btn btn-ghost text-lg text-primary font-semibold mt-5">See more<FontAwesomeIcon className='px-2' icon={faArrowRight}></FontAwesomeIcon></button>
             </div>
         </div >
 

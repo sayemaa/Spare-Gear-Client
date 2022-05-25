@@ -5,8 +5,11 @@ import reviews from '../../assets/icons/reviews.svg'
 
 const BusinessSummary = () => {
     return (
-        <div className='my-10 mt-40'>
-            <h2 className="text-4xl mb-12 text-primary text-center">Business Summary</h2>
+        <div className='mt-32 mb-52'>
+            <div className='text-center mb-14'>
+                <h4 className="text-xl text-accent font-bold mb-3">Business Summary</h4>
+                <h2 className='text-3xl text-secondary'>We Have Served</h2>
+            </div>
             <div className='max-w-6xl mx-auto lg:w-full w-80'>
                 <div className="stats stats-vertical lg:stats-horizontal shadow-lg flex-col justify-around mx-auto px-12 container text-center">
                     <div className="stat text-center">
