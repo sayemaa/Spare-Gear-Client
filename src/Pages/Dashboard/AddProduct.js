@@ -1,33 +1,32 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 
-const AddReview = () => {
+const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
-    const [user] = useAuthState(auth);
 
     const onSubmit = async data => {
         // console.log(data)
-        const review = {
-            name: user?.displayName,
-            userReview: data.userReview,
-            rating: data.rating,
-            image: data.image
+        const product = {
+            name: data.name,
+            price: data.price,
+            description: data.description,
+            img: data.image,
+            minQuantity: data.minQuantity,
+            availableQuantity: data.availableQuantity
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify(review)
+            body: JSON.stringify(product)
         })
             .then(res => res.json())
             .then(inserted => {
                 if (inserted.insertedId) {
-                    toast.success('Your review has been added successfully!');
+                    toast.success('Product has been added successfully!');
                     reset();
                 }
             })
@@ -36,45 +35,58 @@ const AddReview = () => {
 
     return (
         <div className='grid justify-items-center content-center mt-5'>
-            <h2 className='text-2xl font-bold text-primary my-5'>Add a Review</h2>
+            <h2 className='text-2xl font-bold text-primary my-5'>Add a Product</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
 
-                {/* Name */}
+                {/* Product Name */}
                 <div className="form-control w-72 max-w-xs ">
                     <input
                         type="text"
-                        placeholder="Your Name"
+                        placeholder="Product Name"
                         className="input input-bordered w-full max-w-xs mb-3"
-                        value={user?.displayName || ""}
-                        disabled />
+                        {...register("name")} />
 
-
-                    {/* Review */}
-
+                    {/* Description */}
                     <textarea className='textarea input-bordered w-full max-w-xs mb-3'
-                        placeholder='Your Review'
+                        placeholder='Product Description'
                         rows={4}
                         required
-                        {...register("userReview")}>
+                        {...register("description")}>
                     </textarea>
 
-                    {/* Ratings */}
+                    {/* Price */}
                     <input
                         type="number"
+                        placeholder="Price"
                         min="0"
-                        max="5"
-                        placeholder="Your Rating"
                         className="input input-bordered w-full max-w-xs mb-3"
                         required
-                        {...register("rating")} />
+                        {...register("price")} />
 
                     {/* Photo */}
                     <input
                         type="text"
-                        placeholder="Your Photo URL"
+                        placeholder="Product Image URL"
                         className="input input-bordered w-full max-w-xs mb-3"
                         required
                         {...register("image")} />
+
+                    {/* Minimum Order */}
+                    <input
+                        type="number"
+                        placeholder="Minimum Order Quantity"
+                        className="input input-bordered w-full max-w-xs mb-3"
+                        required
+                        {...register("minQuantity")} />
+
+                    {/* Available Quantity */}
+                    <input
+                        type="number"
+                        placeholder="Available Quantity"
+                        className="input input-bordered w-full max-w-xs mb-3"
+                        required
+                        {...register("availableQuantity")} />
+
                     <div className="flex justify-center">
                         <input className='btn btn-primary w-24 max-w-xs' type="submit" value="Add" />
                     </div>
@@ -84,4 +96,4 @@ const AddReview = () => {
     );
 };
 
-export default AddReview;
+export default AddProduct;

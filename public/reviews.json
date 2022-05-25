@@ -4,20 +4,20 @@
         "name": "Patrick Murray",
         "image": "https://randomuser.me/api/portraits/men/22.jpg",
         "userReview": "Every product I ordered from here functions perfectly and is well received.",
-        "rating": "5/5"
+        "rating": "5"
     },
     {
         "_id": "2",
         "name": "Ervin Howell",
         "image": "https://randomuser.me/api/portraits/men/9.jpg",
         "userReview": "Excellent products, price and service. Arrived promptly.",
-        "rating": "5/5"
+        "rating": "5"
     },
     {
         "_id": "3",
         "name": "Samuel Karlsson",
         "image": "https://randomuser.me/api/portraits/men/11.jpg",
         "userReview": "I can find all the parts of a motorcycle from here, and they are of excellent quality.",
-        "rating": "4.9/5"
+        "rating": "4.9"
     }
 ]

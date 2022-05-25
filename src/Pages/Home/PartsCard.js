@@ -14,10 +14,10 @@ const PartsCard = ({ parts }) => {
             <figure><img src={img} className='h-64 p-6' alt="parts" /></figure>
             <div className="card-body text-center">
                 <h2 className="text-2xl font-bold">{name}</h2>
-                <p className='text-xl my-2'>Price: ${price}</p>
+                <p className='text-xl my-2 font-medium'>Price: ${price}</p>
                 <p>{description.slice(0, 99)}</p>
-                <p>Minimum Quantity: {minQuantity}</p>
-                <p>Available Quantity: {availableQuantity}</p>
+                <p className='font-medium text-lg'>Available Quantity: {availableQuantity}</p>
+                <p className='font-medium text-lg'>Minimum Order: {minQuantity}</p>
                 <div className="card-actions justify-center mt-5 mb-2">
                     <button onClick={() => handlePlaceOrder(_id)} className="btn btn-primary text-white">Place Order</button>
                 </div>
