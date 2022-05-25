@@ -5,7 +5,7 @@ const Dashboard = () => {
     return (
         <div className="drawer drawer-mobile">
             <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content px-10">
+            <div className="drawer-content bg-gray-100 px-10">
                 <Outlet />
             </div>
             <div className="drawer-side">
@@ -14,6 +14,7 @@ const Dashboard = () => {
                     <li><Link to="/dashboard">My Orders</Link></li>
                     <li><Link to="/dashboard/addReview">Add a Review</Link></li>
                     <li><Link to="/dashboard/profile">My Profile</Link></li>
+                    <li><Link to="/dashboard/makeAdmin">Make Admin</Link></li>
                 </ul>
             </div>
         </div>

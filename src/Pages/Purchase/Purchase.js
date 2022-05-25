@@ -132,7 +132,6 @@ const Purchase = () => {
                                     className='btn btn-primary block mx-auto'
                                     type="submit"
                                     value="Order"
-                                    disabled={error}
                                 />
                             </form>
 

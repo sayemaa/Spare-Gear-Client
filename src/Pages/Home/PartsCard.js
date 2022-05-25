@@ -10,7 +10,7 @@ const PartsCard = ({ parts }) => {
     }
 
     return (
-        <div className="card lg:max-w-lg bg-base-100 shadow-xl mx-2">
+        <div className="card lg:max-w-lg bg-base-100 shadow-xl mx-2 mb-3">
             <figure><img src={img} className='h-64 p-6' alt="parts" /></figure>
             <div className="card-body text-center">
                 <h2 className="text-2xl font-bold">{name}</h2>
@@ -18,7 +18,7 @@ const PartsCard = ({ parts }) => {
                 <p>{description.slice(0, 99)}</p>
                 <p>Minimum Quantity: {minQuantity}</p>
                 <p>Available Quantity: {availableQuantity}</p>
-                <div className="card-actions justify-center mt-5">
+                <div className="card-actions justify-center mt-5 mb-2">
                     <button onClick={() => handlePlaceOrder(_id)} className="btn btn-primary text-white">Place Order</button>
                 </div>
             </div>

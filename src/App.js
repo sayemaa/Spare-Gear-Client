@@ -2,8 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import AllParts from './Pages/AllParts/AllParts';
 import AddReview from './Pages/Dashboard/AddReview';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import Home from './Pages/Home/Home';
@@ -21,6 +23,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />}></Route>
                 <Route path='home' element={<Home />}></Route>
+                <Route path='allParts' element={<AllParts />}></Route>
                 <Route path='products/:productId' element={<RequireAuth>
                     <Purchase />
                 </RequireAuth>}></Route>
@@ -28,6 +31,7 @@ function App() {
                     <Route index element={<MyOrders />}></Route>
                     <Route path='addReview' element={<AddReview />}></Route>
                     <Route path='profile' element={<MyProfile />}></Route>
+                    <Route path='makeAdmin' element={<MakeAdmin />}></Route>
                 </Route>
                 <Route path='blogs' element={<Home />}></Route>
                 <Route path='login' element={<Login />}></Route>
