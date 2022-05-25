@@ -77,11 +77,11 @@ const Purchase = () => {
     return (
         <div className='max-w-7xl mx-auto mb-24'>
             <h2 className="text-4xl font-bold text-primary text-center my-8">Purchase</h2>
-            <div class="hero">
-                <div class="hero-content flex-col lg:flex-row">
+            <div className="hero">
+                <div className="hero-content flex-col lg:flex-row">
 
                     {/* Product Info */}
-                    <div class="text-center lg:text-left ">
+                    <div className="text-center lg:text-left ">
                         <div className="card lg:max-w-lg md:w-96 lg:w-96 w-80 shadow-xl mx-2">
                             <figure><img src={img} className='h-64 p-6' alt="products" /></figure>
                             <div className="card-body text-center">
@@ -95,8 +95,8 @@ const Purchase = () => {
                     </div>
 
                     {/* Purchase Info */}
-                    <div class="card flex-shrink-0 max-w-sm shadow-xl bg-base-100 ">
-                        <div class="card-body py-5">
+                    <div className="card flex-shrink-0 max-w-sm shadow-xl bg-base-100 ">
+                        <div className="card-body py-5">
                             <h2 className="text-2xl font-semibold text-primary mb-5">Purchase Info</h2>
 
                             {/* Form */}
@@ -104,7 +104,7 @@ const Purchase = () => {
                                 {/* Order */}
                                 <div className='flex mb-2'>
                                     <h2 className='mr-4 text-xl font-medium'>Total Order: {!orderTotal ? minQuantity : orderTotal}</h2>
-                                    <label for="quantity-modal" class="btn modal-button btn-primary btn-xs">Change</label>
+                                    <label htmlFor="quantity-modal" className="btn modal-button btn-primary btn-xs">Change</label>
                                 </div>
                                 {error}
                                 {/* Total Price */}
@@ -137,19 +137,19 @@ const Purchase = () => {
                             </form>
 
                             {/* Modal */}
-                            <input type="checkbox" id="quantity-modal" class="modal-toggle" />
-                            <div class="modal">
-                                <div class="modal-box text-center">
+                            <input type="checkbox" id="quantity-modal" className="modal-toggle" />
+                            <div className="modal">
+                                <div className="modal-box text-center">
                                     <label htmlFor="quantity-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                    <h3 class="font-bold text-lg">Enter a quantity</h3>
+                                    <h3 className="font-bold text-lg">Enter a quantity</h3>
                                     <input
                                         type="number"
                                         ref={quantityRef}
                                         min='0'
                                         max={availableQuantity}
                                         className='input input-bordered mt-4 w-72' />
-                                    <div class="modal-action">
-                                        <label onClick={handleQuantity} for="quantity-modal" class="btn btn-primary btn-outline mx-auto" >Enter</label>
+                                    <div className="modal-action">
+                                        <label onClick={handleQuantity} htmlFor="quantity-modal" className="btn btn-primary btn-outline mx-auto" >Enter</label>
                                     </div>
                                 </div>
                             </div>

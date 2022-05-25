@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading';
 
 
 const Parts = () => {
-    const { data: partsCollection, isLoading } = useQuery('products', () => fetch('http://localhost:5000/products').then(res => res.json())
+    const { data: partsCollection, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/products').then(res => res.json())
     )
 
     if (isLoading) {
@@ -20,6 +20,7 @@ const Parts = () => {
                     partsCollection?.slice(0, 3).map(parts => <PartsCard
                         key={parts._id}
                         parts={parts}
+                        refetch={refetch}
                     />)
                 }
             </div>
