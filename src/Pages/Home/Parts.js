@@ -26,11 +26,11 @@ const Parts = () => {
             <h2 className="text-4xl mb-12 text-primary text-center mt-20">Parts Collection</h2>
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl px-6">
                 {
-                    partsCollection?.slice(0, 3).map(parts => <PartsCard
+                    partsCollection?.map(parts => <PartsCard
                         key={parts._id}
                         parts={parts}
                         refetch={refetch}
-                    />)
+                    />).reverse().slice(0, 3)
                 }
             </div>
             <div className='flex justify-center mt-10'>

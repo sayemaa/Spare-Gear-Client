@@ -61,7 +61,7 @@ const AddReview = () => {
                     {/* Ratings */}
                     <input
                         type="number"
-                        min="0"
+                        min="1"
                         max="5"
                         placeholder="Your Rating"
                         className="input input-bordered w-full max-w-xs mb-3"
