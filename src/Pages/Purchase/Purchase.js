@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
@@ -14,9 +15,10 @@ const Purchase = () => {
     const [orderTotal, setOrderTotal] = useState('');
     const [error, setError] = useState('');
 
-    const errorElement = <p className='text-red-500'>Please Order within the range</p>
+    const errorAvailable = <p className='text-red-500'>Please order within the available quantity </p>
+    const errorMinimum = <p className='text-red-500'>Please meet the minimum order quantity </p>
 
-    const { name, availableQuantity, minQuantity, img, price, description } = eachParts;
+    const { _id, name, availableQuantity, minQuantity, img, price, description } = eachParts;
 
     useEffect(() => {
         const url = `http://localhost:5000/parts/${partsId}`;
@@ -32,32 +34,43 @@ const Purchase = () => {
             setOrderTotal(quantity);
             setError('');
         }
-        else {
-            setError(errorElement)
+        else if (parseInt(quantity) < parseInt(minQuantity)) {
+            setError(errorMinimum)
+        }
+        else if (parseInt(quantity) > parseInt(availableQuantity)) {
+            setError(errorAvailable);
         }
     }
 
     const onSubmit = data => {
         // console.log(data)
-        // const totalOrder = orderTotal || minQuantity;
-        // const totalPrice = (!orderTotal ? price * minQuantity : orderTotal * price).toString();
-        // const name = user?.displayName;
-        // const email = user?.email;
-        // const productName = name;
-        // const phone = data.phone;
-        // const address = data.address;
+        const totalOrder = orderTotal || minQuantity;
+        const totalPrice = (!orderTotal ? price * minQuantity : orderTotal * price).toString();
 
         const order = {
-            totalOrder: orderTotal || minQuantity,
-            totalPrice: (!orderTotal ? price * minQuantity : orderTotal * price).toString(),
+            productId: _id,
+            productName: name,
+            totalOrder,
+            totalPrice,
             name: user?.displayName,
             email: user?.email,
-            productName: name,
             phone: data.phone,
             address: data.address
         }
+        // console.log(order);
 
-        console.log(order);
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success("Your order has been confirmed!")
+            })
 
     };
 
@@ -84,18 +97,18 @@ const Purchase = () => {
                     {/* Purchase Info */}
                     <div class="card flex-shrink-0 max-w-sm shadow-xl bg-base-100 ">
                         <div class="card-body py-5">
-                            <h2 className="text-2xl font-semibold text-neutral mb-5">Purchase Info</h2>
+                            <h2 className="text-2xl font-semibold text-primary mb-5">Purchase Info</h2>
 
                             {/* Form */}
                             <form className='my-3 lg:w-full md:w-full w-64 lg:mx-0 mx-auto' onSubmit={handleSubmit(onSubmit)}>
                                 {/* Order */}
-                                <div className='flex '>
+                                <div className='flex mb-2'>
                                     <h2 className='mr-4 text-xl font-medium'>Total Order: {!orderTotal ? minQuantity : orderTotal}</h2>
                                     <label for="quantity-modal" class="btn modal-button btn-primary btn-xs">Change</label>
                                 </div>
                                 {error}
                                 {/* Total Price */}
-                                <h2 className='mr-4 text-xl font-medium my-4'>Total Price: {!orderTotal ? price * minQuantity : orderTotal * price}</h2>
+                                <h2 className='mr-4 text-xl font-medium my-4'>Total Price: ${!orderTotal ? price * minQuantity : orderTotal * price}</h2>
                                 <input
                                     className='input input-bordered w-full mb-2'
                                     value={user?.displayName || ""}
@@ -118,22 +131,25 @@ const Purchase = () => {
                                 <input
                                     className='btn btn-primary block mx-auto'
                                     type="submit"
-                                    value="Order" />
+                                    value="Order"
+                                    disabled={error}
+                                />
                             </form>
 
                             {/* Modal */}
                             <input type="checkbox" id="quantity-modal" class="modal-toggle" />
                             <div class="modal">
                                 <div class="modal-box text-center">
-                                    <label htmlFor="quantity-modal" className="btn btn-sm btn-circle absolute right-2 top-2 btn-primary">✕</label>
+                                    <label htmlFor="quantity-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                     <h3 class="font-bold text-lg">Enter a quantity</h3>
                                     <input
                                         type="number"
                                         ref={quantityRef}
-                                        min={minQuantity}
+                                        min='0'
+                                        max={availableQuantity}
                                         className='input input-bordered mt-4 w-72' />
                                     <div class="modal-action">
-                                        <label onClick={handleQuantity} for="quantity-modal" class="btn btn-primary btn-outline mx-auto">Enter</label>
+                                        <label onClick={handleQuantity} for="quantity-modal" class="btn btn-primary btn-outline mx-auto" >Enter</label>
                                     </div>
                                 </div>
                             </div>

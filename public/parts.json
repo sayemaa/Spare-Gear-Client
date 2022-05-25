@@ -3,7 +3,7 @@
         "_id": 1,
         "name": "K&N Oil Filters",
         "price": "99",
-        "description": "K&N Oil Filters are designed to satisfy the needs of racers as well as the average motorcycle owner who wants the best oil filter available.",
+        "description": "K&N Oil Filters are designed to satisfy the needs of racers who wants the best oil filter available.",
         "img": "https://i.ibb.co/51FzHPr/1.jpg",
         "minQuantity": "10",
         "availableQuantity": "80"
@@ -12,7 +12,7 @@
         "_id": 2,
         "name": "Galaxy Front Wheel",
         "price": "1440",
-        "description": "These forged wheels place the highest material strength in the same direction as the operating load, creating a light and strong wheel.",
+        "description": "These forged wheels place the highest material strength you can imagine, creating a light and strong wheel.",
         "img": "https://i.ibb.co/MMPnXn3/5.jpg",
         "minQuantity": "2",
         "availableQuantity": "200"
@@ -21,7 +21,7 @@
         "_id": 3,
         "name": "Evolution Exhaust System",
         "price": "2000",
-        "description": "Developed and tested by the top factory teams by riders at the pinnacle of racing, it is simply the finest performance exhaust system available. ",
+        "description": "Developed and tested by the top factory teams, it is simply the finest performance exhaust system available. ",
         "img": "https://i.ibb.co/RpSf0F1/4.jpg",
         "minQuantity": "2",
         "availableQuantity": "74"
@@ -30,7 +30,7 @@
         "_id": 4,
         "name": "S&S Power Package",
         "price": "2500",
-        "description": "This collection will boost your 107 inch M8 motor up to a mind blowing 124 inch, with a cam to harness the power and oil pump to maintain reliability",
+        "description": "This collection will boost your motor up with a cam to harness the power and oil pump to maintain reliability.",
         "img": "https://i.ibb.co/L84Ytvd/2.jpg",
         "minQuantity": "5",
         "availableQuantity": "30"
@@ -57,7 +57,7 @@
         "_id": 7,
         "name": "Shorai Lithium Battery",
         "price": "290",
-        "description": "Shorai LFX Lithium motorcycle batteries are some of the lightest and most powerful replacement batteries available.",
+        "description": "Shorai Lithium motorcycle batteries are some of the lightest and most powerful replacement batteries available.",
         "img": "https://i.ibb.co/BZpqB8S/7.jpg",
         "minQuantity": "6",
         "availableQuantity": "72"
@@ -75,7 +75,7 @@
         "_id": 9,
         "name": "ProBEAM LED",
         "price": "260",
-        "description": "Utilizing advanced LED technology, the ProBEAM LED turn signals maximize performance with unique reflector technology and the most superior automotive grade LEDs available.",
+        "description": "Utilizing advanced LED technology, the ProBEAM LED is the most superior automotive grade LEDs available.",
         "img": "https://i.ibb.co/6ww1dg6/9.jpg",
         "minQuantity": "4",
         "availableQuantity": "40"
@@ -84,7 +84,7 @@
         "_id": 10,
         "name": "Tire Hugger",
         "price": "230",
-        "description": "The Klock Werks design team has taken the guesswork out of creating tire-hugging fender styles. Show off those wheels!",
+        "description": "The Klock Werks design team has taken the guesswork out of creating tire-hugging fender styles.",
         "img": "https://i.ibb.co/1b2cpjq/10.jpg",
         "minQuantity": "2",
         "availableQuantity": "100"
@@ -93,7 +93,7 @@
         "_id": 11,
         "name": "Racing Windscreens",
         "price": "100",
-        "description": "Improve the looks and wind protection of our r_ide with performance focused, high impact acrylic Racing Windscreen.",
+        "description": "Improve the looks and wind protection of our rider with performance focused, high impact Racing Windscreen.",
         "img": "https://i.ibb.co/n80hf20/11.jpg",
         "minQuantity": "1",
         "availableQuantity": "60"
@@ -102,7 +102,7 @@
         "_id": 12,
         "name": "Legacy Gas Tank",
         "price": "290",
-        "description": "Unique, functional styling and a great classic gas tank that is just enough to set your bike apart without overdoing it.",
+        "description": "Unique, functional styling and a great classic gas tank that is just enough to set your bike apart.",
         "img": "https://i.ibb.co/mRQHfkF/12.jpg",
         "minQuantity": "10",
         "availableQuantity": "150"
