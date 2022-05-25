@@ -10,6 +10,7 @@ import MyOrders from './Pages/Dashboard/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import RequireAdmin from './Pages/Login/RequireAdmin';
 import RequireAuth from './Pages/Login/RequireAuth';
 import SignUp from './Pages/Login/SignUp';
 import Purchase from './Pages/Purchase/Purchase';
@@ -28,10 +29,10 @@ function App() {
                     <Purchase />
                 </RequireAuth>}></Route>
                 <Route path='dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
-                    <Route index element={<MyOrders />}></Route>
+                    <Route index element={<MyProfile />}></Route>
+                    <Route path='myOrders' element={<MyOrders />}></Route>
                     <Route path='addReview' element={<AddReview />}></Route>
-                    <Route path='profile' element={<MyProfile />}></Route>
-                    <Route path='makeAdmin' element={<MakeAdmin />}></Route>
+                    <Route path='makeAdmin' element={<RequireAdmin><MakeAdmin /></RequireAdmin>}></Route>
                 </Route>
                 <Route path='blogs' element={<Home />}></Route>
                 <Route path='login' element={<Login />}></Route>

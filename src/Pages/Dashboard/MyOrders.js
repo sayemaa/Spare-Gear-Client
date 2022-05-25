@@ -53,7 +53,7 @@ const MyOrders = () => {
                                 <td>{order.name}</td>
                                 <td>{order.productName} </td>
                                 <td>{order.totalOrder}</td>
-                                <td>{order.totalPrice}</td>
+                                <td>${order.totalPrice}</td>
                                 <td><button className='btn btn-xs btn-outline btn-error'>Cancel</button></td>
                             </tr>)
                         }
