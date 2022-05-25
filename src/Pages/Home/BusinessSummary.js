@@ -1,37 +1,38 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faQuoteLeft, faSackDollar, faUsers } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import customer from '../../assets/icons/customer.svg'
+import revenue from '../../assets/icons/revenue.svg'
+import reviews from '../../assets/icons/reviews.svg'
 
 const BusinessSummary = () => {
     return (
-        <div className='max-w-7xl mx-auto my-24'>
-            <h2 className="text-4xl text-error text-center mb-10">We have Served</h2>
-            <div className="hero">
-                <div className="hero-content text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20">
-                    <div className="max-w-md">
-                        <FontAwesomeIcon className='h-14' icon={faUsers} />
-                        <h1 className="text-4xl font-semibold mb-3 mt-5">100+</h1>
-                        <h1 className="text-xl text-error">Customers</h1>
+        <div className='my-10 mt-40'>
+            <h2 className="text-4xl mb-12 text-primary text-center">Business Summary</h2>
+            <div className='max-w-6xl mx-auto lg:w-full w-80'>
+                <div class="stats stats-vertical lg:stats-horizontal shadow-lg flex-col justify-around mx-auto px-12 container text-center">
+                    <div class="stat text-center">
+                        <img src={customer} className="w-56" alt="" />
+                        <div class="stat-value">100+</div>
+                        <div class="text-secondary font-semibold">Customers</div>
                     </div>
-                    <div className="max-w-md">
-                        <FontAwesomeIcon className='h-14' icon={faSackDollar} />
-                        <h1 className="text-4xl font-semibold mb-3 mt-5">120M+</h1>
-                        <h1 className="text-xl text-error">Annual Revenue</h1>
+
+                    <div class="stat">
+                        <img src={revenue} className="w-56" alt="" />
+                        <div class="stat-value">120M+</div>
+                        <div class="text-secondary font-semibold">Annual Revenue</div>
                     </div>
-                    <div className="max-w-md">
-                        <FontAwesomeIcon className='h-14' icon={faQuoteLeft} />
-                        <h1 className="text-4xl font-semibold mb-3 mt-5">33K+</h1>
-                        <h1 className="text-xl text-error">Reviews</h1>
+
+                    <div class="stat">
+                        <img src={reviews} className="w-56" alt="" />
+                        <div class="stat-value">33K+</div>
+                        <div class="text-secondary font-semibold">Reviews</div>
                     </div>
-                    <div className="max-w-md">
-                        <FontAwesomeIcon className='h-14' icon={faGear} />
-                        <h1 className="text-4xl font-semibold mb-3 mt-5">50+</h1>
-                        <h1 className="text-xl text-error">Tools</h1>
-                    </div>
+
                 </div>
             </div>
         </div>
     );
 };
+
+// class="stats stats-vertical lg:stats-horizontal shadow container max-w-6xl mx-auto my-10 mt-40 text-center flex-col justify-center"
 
 export default BusinessSummary;

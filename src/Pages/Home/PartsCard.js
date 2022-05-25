@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const PartsCard = ({ parts }) => {
-    const { _id, name, description, price, img } = parts;
+    const { _id, name, description, price, img, minQuantity, availableQuantity } = parts;
     const navigate = useNavigate();
 
     const handlePlaceOrder = id => {
@@ -16,8 +16,10 @@ const PartsCard = ({ parts }) => {
                 <h2 className="text-2xl font-bold">{name}</h2>
                 <p className='text-xl my-2'>Price: ${price}</p>
                 <p>{description.slice(0, 99)}</p>
+                <p>Minimum Quantity: {minQuantity}</p>
+                <p>Available Quantity: {availableQuantity}</p>
                 <div className="card-actions justify-center mt-5">
-                    <button onClick={() => handlePlaceOrder(_id)} className="btn btn-error text-white">Place Order</button>
+                    <button onClick={() => handlePlaceOrder(_id)} className="btn btn-primary text-white">Place Order</button>
                 </div>
             </div>
         </div>
