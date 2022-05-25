@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form"
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -18,14 +19,17 @@ const Login = () => {
     let signInError;
     const navigate = useNavigate();
     const location = useLocation();
+    const [token] = useToken(user || gUser);
     let from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate])
 
     if (loading || gLoading) {
         return <Loading />
-    }
-
-    if (user || gUser) {
-        navigate(from, { replace: true });
     }
 
     if (error || gError) {
@@ -93,7 +97,7 @@ const Login = () => {
                         {signInError}
                         <input className='btn w-full max-w-xs' type="submit" value="Login" />
                     </form>
-                    <p><small>New to Spare Gear? <Link className='text-error' to="/signup">Create New Account</Link></small></p>
+                    <p><small>New to Spare Gear? <Link className='text-accent' to="/signup">Create New Account</Link></small></p>
                     <div className="divider">OR</div>
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">Continue with Google</button>
                 </div>

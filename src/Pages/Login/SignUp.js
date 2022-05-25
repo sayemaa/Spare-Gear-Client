@@ -4,6 +4,7 @@ import auth from '../../firebase.init';
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -17,6 +18,7 @@ const SignUp = () => {
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    const [token] = useToken(user || gUser);
     const navigate = useNavigate();
 
     let signInError;
@@ -29,7 +31,7 @@ const SignUp = () => {
         signInError = <p className='text-red-500 mb-2'><small>{error?.message || gError?.message || updateError?.message}</small></p>
     }
 
-    if (user || gUser) {
+    if (token) {
         navigate('/home');
     }
 
@@ -38,7 +40,6 @@ const SignUp = () => {
         // console.log(data)
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        console.log("update done");
     }
 
     return (
@@ -116,7 +117,7 @@ const SignUp = () => {
                         {signInError}
                         <input className='btn w-full max-w-xs' type="submit" value="Sign Up" />
                     </form>
-                    <p><small>Already have an account? <Link className='text-error' to="/login">Please Login</Link></small></p>
+                    <p><small>Already have an account? <Link className='text-accent' to="/login">Please Login</Link></small></p>
                     <div className="divider">OR</div>
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">Continue with Google</button>
                 </div>
