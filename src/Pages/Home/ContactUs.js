@@ -8,7 +8,7 @@ const ContactUs = () => {
         }} className='px-10 py-14 mt-32'>
 
             <div className='text-center pb-8'>
-                <h3 className='text-xl text-secondary font-bold mb-4'>Contact Us</h3>
+                <h3 className='text-xl text-accent font-bold mb-4'>Contact Us</h3>
                 <h2 className='text-3xl text-white text-bold mb-5'>Stay connected with us</h2>
             </div>
             <div className='grid grid-cols-1 justify-items-center gap-5'>
