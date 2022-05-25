@@ -7,25 +7,25 @@ import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
-    const { partsId } = useParams();
+    const { productId } = useParams();
     const quantityRef = useRef();
     const { register, handleSubmit } = useForm();
 
-    const [eachParts, setEachParts] = useState({});
+    const [product, setProduct] = useState({});
     const [orderTotal, setOrderTotal] = useState('');
     const [error, setError] = useState('');
 
     const errorAvailable = <p className='text-red-500'>Please order within the available quantity </p>
     const errorMinimum = <p className='text-red-500'>Please meet the minimum order quantity </p>
 
-    const { _id, name, availableQuantity, minQuantity, img, price, description } = eachParts;
+    const { _id, name, availableQuantity, minQuantity, img, price, description } = product;
 
     useEffect(() => {
-        const url = `http://localhost:5000/parts/${partsId}`;
+        const url = `http://localhost:5000/products/${productId}`;
 
         fetch(url)
             .then(res => res.json())
-            .then(data => setEachParts(data));
+            .then(data => setProduct(data));
     }, [])
 
     const handleQuantity = () => {
@@ -83,7 +83,7 @@ const Purchase = () => {
                     {/* Product Info */}
                     <div class="text-center lg:text-left ">
                         <div className="card lg:max-w-lg md:w-96 lg:w-96 w-80 shadow-xl mx-2">
-                            <figure><img src={img} className='h-64 p-6' alt="parts" /></figure>
+                            <figure><img src={img} className='h-64 p-6' alt="products" /></figure>
                             <div className="card-body text-center">
                                 <h2 className="text-2xl font-bold text-primary">{name}</h2>
                                 <p className='text-2xl my-2 font-medium'>Price: ${price}</p>

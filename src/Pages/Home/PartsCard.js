@@ -6,7 +6,7 @@ const PartsCard = ({ parts }) => {
     const navigate = useNavigate();
 
     const handlePlaceOrder = id => {
-        navigate(`/parts/${id}`);
+        navigate(`/products/${id}`);
     }
 
     return (
