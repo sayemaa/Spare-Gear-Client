@@ -19,15 +19,15 @@ const MakeAdmin = () => {
 
     return (
         <div className='max-w-5xl mx-auto'>
-            <h2 className='text-2xl font-bold text-primary my-5'>Make Admin</h2>
+            <h2 className='text-2xl font-bold text-primary mb-5 mt-10 text-center'>Make Admin</h2>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Email</th>
+                            <th>Admin Role</th>
+                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody>

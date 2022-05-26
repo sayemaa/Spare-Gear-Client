@@ -35,7 +35,7 @@ const AddReview = () => {
     }
 
     return (
-        <div className='grid justify-items-center content-center mt-5'>
+        <div className='grid justify-items-center content-center mt-5 lg:ml-[-200px]'>
             <h2 className='text-2xl font-bold text-primary my-5'>Add a Review</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
 

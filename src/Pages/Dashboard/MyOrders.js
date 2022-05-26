@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate, Link } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
@@ -29,39 +31,37 @@ const MyOrders = () => {
                     setOrders(data)
                 });
         }
-    }, [user])
+    }, [user, navigate])
 
     return (
         <div className='max-w-5xl mx-auto'>
-            <h2 className='text-2xl font-bold text-primary my-5'>My Orders</h2>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Order</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Payment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            orders.map((order, index) => <tr>
-                                <th>{index + 1}</th>
-                                <td>{order.name}</td>
-                                <td>{order.productName} </td>
-                                <td>{order.totalOrder}</td>
-                                <td>${order.totalPrice}</td>
-                                <td>{(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
-                                    {(order.totalPrice && order.paid) ? <span className='text-success'>Paid</span> : <button className='btn mx-4 btn-xs btn-error'>Cancel</button>}
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
+            <h2 className='text-2xl font-bold text-primary mb-5 text-center mt-10'>My Orders</h2>
+            <Table className="table w-full">
+                <Thead>
+                    <Tr>
+                        <Th></Th>
+                        <Th>Name</Th>
+                        <Th>Order</Th>
+                        <Th>Quantity</Th>
+                        <Th>Price</Th>
+                        <Th>Payment</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {
+                        orders.map((order, index) => <Tr>
+                            <Th>{index + 1}</Th>
+                            <Td>{order.name}</Td>
+                            <Td>{order.productName} </Td>
+                            <Td>{order.totalOrder}</Td>
+                            <Td>${order.totalPrice}</Td>
+                            <Td>{(!order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
+                                {(order.paid) ? <span className='text-success'>Paid</span> : <button className='btn ml-2 btn-xs btn-error'>Cancel</button>}
+                            </Td>
+                        </Tr>)
+                    }
+                </Tbody>
+            </Table>
         </div>
     );
 };

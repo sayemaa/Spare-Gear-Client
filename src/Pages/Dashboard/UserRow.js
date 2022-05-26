@@ -1,6 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
+
 const UserRow = ({ user, index, refetch }) => {
     const { email, role } = user;
     const makeAdmin = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import customer from '../../assets/icons/customer.svg'
 import revenue from '../../assets/icons/revenue.svg'
-import reviews from '../../assets/icons/reviews.svg'
+import review from '../../assets/icons/review.svg'
 
 const BusinessSummary = () => {
     return (
@@ -25,7 +25,7 @@ const BusinessSummary = () => {
                     </div>
 
                     <div className="stat">
-                        <img src={reviews} className="w-56" alt="" />
+                        <img src={review} className="w-40" alt="" />
                         <div className="stat-value">33K+</div>
                         <div className="text-secondary font-semibold">Reviews</div>
                     </div>
