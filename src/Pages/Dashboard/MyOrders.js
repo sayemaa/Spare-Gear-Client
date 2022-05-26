@@ -49,14 +49,17 @@ const MyOrders = () => {
                 </Thead>
                 <Tbody>
                     {
-                        orders.map((order, index) => <Tr>
+                        orders.map((order, index) => <Tr key={index}>
                             <Th>{index + 1}</Th>
                             <Td>{order.name}</Td>
                             <Td>{order.productName} </Td>
                             <Td>{order.totalOrder}</Td>
                             <Td>${order.totalPrice}</Td>
                             <Td>{(!order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
-                                {(order.paid) ? <span className='text-success'>Paid</span> : <button className='btn ml-2 btn-xs btn-error'>Cancel</button>}
+                                {(order.paid) ? <div>
+                                    <p><span className='text-success'>Paid</span></p>
+                                    <p>Transaction Id: <br /><span className='text-orange-500'>{order.transactionId}</span></p>
+                                </div> : <button className='btn ml-2 btn-xs btn-error'>Cancel</button>}
                             </Td>
                         </Tr>)
                     }
