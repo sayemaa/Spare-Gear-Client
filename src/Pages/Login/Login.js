@@ -1,20 +1,23 @@
-import React, { useEffect } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React, { useEffect, useRef } from 'react';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form"
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, getValues } = useForm();
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+        auth)
 
     let signInError;
     const navigate = useNavigate();
@@ -28,7 +31,7 @@ const Login = () => {
         }
     }, [token, from, navigate])
 
-    if (loading || gLoading) {
+    if (loading || gLoading || sending) {
         return <Loading />
     }
 
@@ -37,8 +40,18 @@ const Login = () => {
     }
 
     const onSubmit = data => {
-        // console.log(data)
         signInWithEmailAndPassword(data.email, data.password);
+    }
+
+    const resetPassword = () => {
+        const email = getValues('email')
+        if (email) {
+            sendPasswordResetEmail(email);
+            toast.success('Email sent!')
+        }
+        else {
+            toast.error('Please enter your email address')
+        }
     }
 
     return (
@@ -52,7 +65,7 @@ const Login = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input
-                                type="email"
+                                type="text"
                                 placeholder="Your Email"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("email", {
@@ -98,6 +111,7 @@ const Login = () => {
                         <input className='btn w-full max-w-xs' type="submit" value="Login" />
                     </form>
                     <p><small>New to Spare Gear? <Link className='text-accent' to="/signup">Create New Account</Link></small></p>
+                    <p><small>Forgot Password? <button className='text-accent' onClick={resetPassword}>Reset Password</button></small></p>
                     <div className="divider">OR</div>
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">Continue with Google</button>
                 </div>

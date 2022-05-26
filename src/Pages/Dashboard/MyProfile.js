@@ -47,12 +47,12 @@ const MyProfile = () => {
     return (
         <div className='max-w-7xl mx-auto mb-24'>
             <h2 className='text-2xl font-bold text-primary mb-5 mt-10 text-center'>My Profile</h2>
-            <div className="hero w-full">
-                <div className="hero-content flex-col lg:flex-row">
+            <div className="hero ">
+                <div className="hero-content ml-[-10px] lg:ml-0 flex-col lg:flex-row">
 
                     {/* User Info */}
                     <div className="text-center lg:text-left">
-                        <div className="card lg:max-w-lg md:w-96 lg:w-96 w-64 shadow-xl mx-2 bg-base-100">
+                        <div className="card shadow-xl bg-base-100">
                             <div className="card-body text-center">
                                 <h2 className="text-xl"><span className='font-medium'>Name: </span>{user?.displayName}</h2>
                                 <p className='text-xl my-2'><span className='font-medium'>Email: </span>{user?.email}</p>
