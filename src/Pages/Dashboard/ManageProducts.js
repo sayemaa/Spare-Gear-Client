@@ -9,7 +9,7 @@ const ManageProducts = () => {
     const [productId, setProductId] = useState(null);
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/products/${id}`;
+        const url = `https://enigmatic-tundra-01772.herokuapp.com/products/${id}`;
         fetch(url, {
             method: 'DELETE',
         })

@@ -15,7 +15,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+            fetch(`https://enigmatic-tundra-01772.herokuapp.com/orders?email=${user?.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const MyOrders = () => {
     }, [user, navigate, orders])
 
     const handleCancel = (id) => {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://enigmatic-tundra-01772.herokuapp.com/orders/${id}`;
         fetch(url, {
             method: 'DELETE',
         })
@@ -90,7 +90,7 @@ const MyOrders = () => {
                                 {
                                     (order.shipped && !order.paid) &&
                                     <div>
-                                        <p><span className='text-success font-medium'>Paid</span></p>
+                                        <p><span className='text-success font-medium'>Shipped</span></p>
                                         <p>Transaction Id: <br /><span className='text-orange-500'>{order.transactionId}</span></p>
                                     </div>
                                 }

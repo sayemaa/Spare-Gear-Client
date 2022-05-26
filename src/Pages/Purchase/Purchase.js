@@ -22,7 +22,7 @@ const Purchase = () => {
     const { _id, name, availableQuantity, minQuantity, img, price, description } = product;
 
     useEffect(() => {
-        const url = `http://localhost:5000/products/${productId}`;
+        const url = `https://enigmatic-tundra-01772.herokuapp.com/products/${productId}`;
 
         fetch(url)
             .then(res => res.json())
@@ -60,7 +60,7 @@ const Purchase = () => {
         }
         // console.log(order);
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://enigmatic-tundra-01772.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

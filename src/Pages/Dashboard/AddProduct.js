@@ -16,7 +16,7 @@ const AddProduct = () => {
             availableQuantity: data.availableQuantity
         }
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://enigmatic-tundra-01772.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

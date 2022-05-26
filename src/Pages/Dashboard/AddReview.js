@@ -17,7 +17,7 @@ const AddReview = () => {
             image: data.image
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://enigmatic-tundra-01772.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

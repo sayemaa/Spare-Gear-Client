@@ -9,7 +9,7 @@ const MyProfile = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit, reset } = useForm();
 
-    const { data: profile, refetch } = useQuery('profile', () => fetch(`http://localhost:5000/user/${user?.email}`).then(res => res.json())
+    const { data: profile, refetch } = useQuery('profile', () => fetch(`https://enigmatic-tundra-01772.herokuapp.com/user/${user?.email}`).then(res => res.json())
     )
 
     const onSubmit = data => {
@@ -29,7 +29,7 @@ const MyProfile = () => {
             linkedIn
         }
 
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://enigmatic-tundra-01772.herokuapp.com/user/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
