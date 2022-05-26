@@ -19,6 +19,7 @@ const Navbar = () => {
 
         }
         <li><Link to="/blogs">Blogs</Link></li>
+        <li><Link to="/portfolio">My Portfolio</Link></li>
         <li className='lg:hidden'>{user ? <button className="btn btn-ghost" onClick={logout} >Sign Out</button> : <Link to="/login">Login</Link>}</li>
     </>
     return (

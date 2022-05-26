@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import AllParts from './Pages/AllParts/AllParts';
+import Blogs from './Pages/Blogs/Blogs';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import AddReview from './Pages/Dashboard/AddReview';
 import Dashboard from './Pages/Dashboard/Dashboard';
@@ -14,9 +15,11 @@ import Login from './Pages/Login/Login';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import RequireAuth from './Pages/Login/RequireAuth';
 import SignUp from './Pages/Login/SignUp';
+import Portfolio from './Pages/Portfolio/Portfolio';
 import Purchase from './Pages/Purchase/Purchase';
 import Footer from './Pages/Shared/Footer';
 import Navbar from './Pages/Shared/Navbar';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
     return (
@@ -38,9 +41,11 @@ function App() {
                     <Route path='makeAdmin' element={<RequireAdmin><MakeAdmin /></RequireAdmin>}></Route>
                     <Route path='addProduct' element={<RequireAdmin><AddProduct /></RequireAdmin>}></Route>
                 </Route>
-                <Route path='blogs' element={<Home />}></Route>
+                <Route path='blogs' element={<Blogs />}></Route>
+                <Route path='portfolio' element={<Portfolio />}></Route>
                 <Route path='login' element={<Login />}></Route>
                 <Route path='signup' element={<SignUp />}></Route>
+                <Route path='*' element={<NotFound />}></Route>
             </Routes>
             <Footer />
             <ToastContainer />
