@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const PartsCard = ({ parts }) => {
-    const { _id, name, description, price, img, minQuantity, availableQuantity } = parts;
+const PartsCard = ({ product }) => {
+    const { _id, name, description, price, img, minQuantity, availableQuantity } = product;
     const navigate = useNavigate();
 
     const handlePlaceOrder = id => {

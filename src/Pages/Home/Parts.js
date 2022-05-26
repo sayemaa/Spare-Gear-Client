@@ -1,20 +1,14 @@
 import React from 'react';
-import { useQuery } from 'react-query'
 import PartsCard from './PartsCard';
-import Loading from '../Shared/Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import useParts from '../../hooks/useParts';
 
 
 const Parts = () => {
     const navigate = useNavigate();
-    const { data: partsCollection, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/products').then(res => res.json())
-    )
-
-    if (isLoading) {
-        return <Loading />
-    }
+    const [products] = useParts();
 
     const handleSeeMore = () => {
         navigate('/allParts');
@@ -26,10 +20,9 @@ const Parts = () => {
             <h2 className="text-4xl mb-12 text-primary text-center mt-20">Parts Collection</h2>
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl px-6">
                 {
-                    partsCollection?.map(parts => <PartsCard
-                        key={parts._id}
-                        parts={parts}
-                        refetch={refetch}
+                    products?.map(product => <PartsCard
+                        key={product._id}
+                        product={product}
                     />).reverse().slice(0, 3)
                 }
             </div>

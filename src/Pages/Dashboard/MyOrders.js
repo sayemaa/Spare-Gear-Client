@@ -5,11 +5,13 @@ import { useNavigate, Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import OrderCancelModal from './OrderCancelModal';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
+    const [orderId, setOrderId] = useState(null);
 
     useEffect(() => {
         if (user) {
@@ -32,6 +34,19 @@ const MyOrders = () => {
                 });
         }
     }, [user, navigate])
+
+    const handleCancel = (id) => {
+        const url = `http://localhost:5000/orders/${id}`;
+        fetch(url, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                const remaining = orders.filter(order => order._id !== id)
+                setOrders(remaining);
+            })
+    }
 
     return (
         <div className='max-w-5xl mx-auto'>
@@ -59,12 +74,18 @@ const MyOrders = () => {
                                 {(order.paid) ? <div>
                                     <p><span className='text-success'>Paid</span></p>
                                     <p>Transaction Id: <br /><span className='text-orange-500'>{order.transactionId}</span></p>
-                                </div> : <button className='btn ml-2 btn-xs btn-error'>Cancel</button>}
+                                </div> : <label onClick={() => setOrderId(order._id)} htmlFor="order-cancel-modal" className="btn modal-button btn-error btn-xs ml-2">Cancel</label>}
                             </Td>
                         </Tr>)
                     }
                 </Tbody>
             </Table>
+            {
+                orderId && <OrderCancelModal
+                    orderId={orderId}
+                    handleCancel={handleCancel}
+                />
+            }
         </div>
     );
 };

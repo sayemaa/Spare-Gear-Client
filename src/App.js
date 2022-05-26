@@ -8,6 +8,8 @@ import AddProduct from './Pages/Dashboard/AddProduct';
 import AddReview from './Pages/Dashboard/AddReview';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
+import ManageOrders from './Pages/Dashboard/ManageOrders';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import Payment from './Pages/Dashboard/Payment';
@@ -41,7 +43,9 @@ function App() {
                     <Route path='payment/:id' element={<Payment />}></Route>
 
                     <Route path='makeAdmin' element={<RequireAdmin><MakeAdmin /></RequireAdmin>}></Route>
+                    <Route path='manageOrders' element={<RequireAdmin><ManageOrders /></RequireAdmin>}></Route>
                     <Route path='addProduct' element={<RequireAdmin><AddProduct /></RequireAdmin>}></Route>
+                    <Route path='manageProducts' element={<RequireAdmin><ManageProducts /></RequireAdmin>}></Route>
                 </Route>
                 <Route path='blogs' element={<Blogs />}></Route>
                 <Route path='portfolio' element={<Portfolio />}></Route>

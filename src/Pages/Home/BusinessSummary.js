@@ -5,7 +5,7 @@ import review from '../../assets/icons/review.svg'
 
 const BusinessSummary = () => {
     return (
-        <div className='mt-32 mb-52'>
+        <div className='mt-32 mb-32'>
             <div className='text-center mb-14'>
                 <h4 className="text-xl text-accent font-bold mb-3">Business Summary</h4>
                 <h2 className='text-3xl text-secondary'>We Have Served</h2>
