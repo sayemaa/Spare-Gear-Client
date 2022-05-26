@@ -14,6 +14,7 @@ const Purchase = () => {
     const [product, setProduct] = useState({});
     const [orderTotal, setOrderTotal] = useState('');
     const [error, setError] = useState('');
+    const [disable, setDisable] = useState(false);
 
     const errorAvailable = <p className='text-red-500'>Please order within the available quantity </p>
     const errorMinimum = <p className='text-red-500'>Please meet the minimum order quantity </p>
@@ -74,6 +75,24 @@ const Purchase = () => {
 
     };
 
+    const handleChange = (event) => {
+        const value = parseInt(event.target.value)
+        // console.log(value);
+        if ((value + 1) <= parseInt(minQuantity) || isNaN(value)) {
+            setDisable(true)
+            setError(errorMinimum)
+        }
+        else if ((value - 1) >= parseInt(availableQuantity)) {
+            setDisable(true)
+            setError(errorAvailable)
+        }
+        else {
+            setDisable(false);
+            setOrderTotal(value)
+            setError('')
+        }
+    }
+
     return (
         <div className='max-w-7xl mx-auto mb-24'>
             <h2 className="text-4xl font-bold text-primary text-center my-8">Purchase</h2>
@@ -99,16 +118,25 @@ const Purchase = () => {
                         <div className="card-body py-5">
                             <h2 className="text-2xl font-semibold text-primary mb-5">Purchase Info</h2>
 
+                            <div className='mb-2'>
+                                <h2 className='mr-4 text-xl font-medium'>Total Order: {!orderTotal ? minQuantity : orderTotal}</h2>
+                            </div>
+
+                            {/* Total Price */}
+                            <h2 className='mr-4 text-xl font-medium my-4'>Total Price: ${!orderTotal ? price * minQuantity : orderTotal * price}</h2>
+
+                            <label htmlFor="">Enter Quantity</label>
+                            <input
+                                type="number"
+                                defaultValue={minQuantity}
+                                onChange={handleChange}
+                                className='input input-bordered' />
+                            {error}
+
                             {/* Form */}
                             <form className='my-3 lg:w-full md:w-full w-64 lg:mx-0 mx-auto' onSubmit={handleSubmit(onSubmit)}>
                                 {/* Order */}
-                                <div className='flex mb-2'>
-                                    <h2 className='mr-4 text-xl font-medium'>Total Order: {!orderTotal ? minQuantity : orderTotal}</h2>
-                                    <label htmlFor="quantity-modal" className="btn modal-button btn-primary btn-xs">Change</label>
-                                </div>
-                                {error}
-                                {/* Total Price */}
-                                <h2 className='mr-4 text-xl font-medium my-4'>Total Price: ${!orderTotal ? price * minQuantity : orderTotal * price}</h2>
+
                                 <input
                                     className='input input-bordered w-full mb-2'
                                     value={user?.displayName || ""}
@@ -131,27 +159,10 @@ const Purchase = () => {
                                 <input
                                     className='btn btn-primary block mx-auto'
                                     type="submit"
+                                    disabled={disable}
                                     value="Order"
                                 />
                             </form>
-
-                            {/* Modal */}
-                            <input type="checkbox" id="quantity-modal" className="modal-toggle" />
-                            <div className="modal">
-                                <div className="modal-box text-center">
-                                    <label htmlFor="quantity-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                    <h3 className="font-bold text-lg">Enter a quantity</h3>
-                                    <input
-                                        type="number"
-                                        ref={quantityRef}
-                                        min='0'
-                                        max={availableQuantity}
-                                        className='input input-bordered mt-4 w-72' />
-                                    <div className="modal-action">
-                                        <label onClick={handleQuantity} htmlFor="quantity-modal" className="btn btn-primary btn-outline mx-auto" >Enter</label>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

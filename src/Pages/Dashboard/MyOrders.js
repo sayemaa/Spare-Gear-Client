@@ -33,7 +33,7 @@ const MyOrders = () => {
                     setOrders(data)
                 });
         }
-    }, [user, navigate])
+    }, [user, navigate, orders])
 
     const handleCancel = (id) => {
         const url = `http://localhost:5000/orders/${id}`;
@@ -70,11 +70,30 @@ const MyOrders = () => {
                             <Td>{order.productName} </Td>
                             <Td>{order.totalOrder}</Td>
                             <Td>${order.totalPrice}</Td>
-                            <Td>{(!order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
-                                {(order.paid) ? <div>
-                                    <p><span className='text-neutral'>Pending..</span></p>
-                                    <p>Transaction Id: <br /><span className='text-orange-500'>{order.transactionId}</span></p>
-                                </div> : <label onClick={() => setOrderId(order._id)} htmlFor="order-cancel-modal" className="btn modal-button btn-error btn-xs ml-2">Cancel</label>}
+                            <Td>
+                                {
+                                    (order.paid) &&
+                                    <div>
+                                        <p><span className='text-neutral'>Pending..</span></p>
+                                        <p>Transaction Id: <br /><span className='text-orange-500'>{order.transactionId}</span></p>
+                                    </div>
+                                }
+                                {
+                                    (!order.paid && !order.shipped) &&
+                                    <div>
+                                        <Link to={`/dashboard/payment/${order._id}`}>
+                                            <button className='btn btn-xs btn-success'>Pay</button>
+                                        </Link>
+                                        <label onClick={() => setOrderId(order._id)} htmlFor="order-cancel-modal" className="btn modal-button btn-error btn-xs ml-2">Cancel</label>
+                                    </div>
+                                }
+                                {
+                                    (order.shipped && !order.paid) &&
+                                    <div>
+                                        <p><span className='text-success font-medium'>Paid</span></p>
+                                        <p>Transaction Id: <br /><span className='text-orange-500'>{order.transactionId}</span></p>
+                                    </div>
+                                }
                             </Td>
                         </Tr>)
                     }

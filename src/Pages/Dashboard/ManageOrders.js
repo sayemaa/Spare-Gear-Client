@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import Loading from '../Shared/Loading';
+import ManageOrderCancelModal from './ManageOrderCancelModal';
 
 
 const ManageOrders = () => {
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/orders', {
+    const [orderId, setOrderId] = useState(null);
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/allOrders', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -19,7 +22,29 @@ const ManageOrders = () => {
     }
 
     const handleShipped = (id) => {
-        console.log(id)
+        const paid = false;
+        fetch(`http://localhost:5000/shipped/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ paid })
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch();
+            })
+    }
+
+    const handleCancel = (id) => {
+        const url = `http://localhost:5000/orders/${id}`;
+        fetch(url, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch();
+            })
     }
 
     return (
@@ -42,11 +67,35 @@ const ManageOrders = () => {
                             <Td>{order.email} </Td>
                             <Td>{order.productName}</Td>
                             <Td>${order.totalPrice}</Td>
-                            <Td><button onClick={() => handleShipped(order._id)} className='btn btn-xs'>Ship</button></Td>
+                            <Td>
+                                {
+                                    order.paid &&
+                                    <div>
+                                        <p>Pending..</p>
+                                        <button onClick={() => handleShipped(order._id)} className='btn btn-xs'>Ship</button>
+                                    </div>
+                                }
+                                {
+                                    order.shipped && <p className='font-semibold text-success'>Shipped</p>
+                                }
+                                {
+                                    !order.paid && !order.shipped &&
+                                    <div>
+                                        <p className='m-1 text-error font-semibold'>Unpaid</p>
+                                        <label onClick={() => setOrderId(order._id)} htmlFor="manage-order-cancel-modal" className="btn modal-button btn-error btn-xs ml-2">Cancel</label>
+                                    </div>
+                                }
+                            </Td>
                         </Tr>)
                     }
                 </Tbody>
             </Table>
+            {
+                orderId && <ManageOrderCancelModal
+                    orderId={orderId}
+                    handleCancel={handleCancel}
+                />
+            }
         </div>
     );
 };
