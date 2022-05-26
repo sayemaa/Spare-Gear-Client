@@ -1,6 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-
+import { Tr, Th, Td } from 'react-super-responsive-table'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 const UserRow = ({ user, index, refetch }) => {
     const { email, role } = user;
@@ -26,11 +27,11 @@ const UserRow = ({ user, index, refetch }) => {
     }
 
     return (
-        <tr>
-            <th>{index + 1}</th>
-            <td>{email}</td>
-            <td>{role !== 'admin' && <button onClick={makeAdmin} className='btn btn-xs'>Make Admin</button>}</td>
-        </tr>
+        <Tr>
+            <Th>{index + 1}</Th>
+            <Td>{email}</Td>
+            <Td>{role !== 'admin' && <button onClick={makeAdmin} className='btn btn-xs'>Make Admin</button>}</Td>
+        </Tr>
     );
 };
 
