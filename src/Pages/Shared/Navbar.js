@@ -20,7 +20,12 @@ const Navbar = () => {
         }
         <li><Link to="/blogs">Blogs</Link></li>
         <li><Link to="/portfolio">My Portfolio</Link></li>
-        <li className='lg:hidden'>{user ? <button className="btn btn-ghost" onClick={logout} >Sign Out</button> : <Link to="/login">Login</Link>}</li>
+        <li className='lg:hidden'>{user ?
+            <div className='flex items-center'>
+                <p>{user?.displayName}</p>
+                <button className="btn btn-ghost" onClick={logout} >Sign Out</button>
+            </div>
+            : <Link to="/login">Login</Link>}</li>
     </>
     return (
         <div className='bg-base-100'>
@@ -48,14 +53,17 @@ const Navbar = () => {
                     <div className='hidden lg:block'>
                         {
                             user ?
-                                <button onClick={logout} className="btn btn-ghost">Sign Out</button>
+                                <div className='flex items-center'>
+                                    <p className='text-lg text-primary'>{user?.displayName}</p>
+                                    <button className="btn btn-ghost" onClick={logout} >Sign Out</button>
+                                </div>
                                 :
                                 <Link to="/login" className="btn">Login</Link>
                         }
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

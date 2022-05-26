@@ -22,7 +22,7 @@ const ManageProducts = () => {
     }
 
     return (
-        <div className='max-w-5xl mx-auto'>
+        <div className='max-w-5xl mx-auto mb-32'>
             <h2 className='text-2xl font-bold text-primary mb-5 text-center mt-10'>Manage Products</h2>
             <Table className="table w-full">
                 <Thead>
