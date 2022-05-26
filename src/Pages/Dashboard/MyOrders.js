@@ -72,7 +72,7 @@ const MyOrders = () => {
                             <Td>${order.totalPrice}</Td>
                             <Td>{(!order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
                                 {(order.paid) ? <div>
-                                    <p><span className='text-success'>Paid</span></p>
+                                    <p><span className='text-neutral'>Pending..</span></p>
                                     <p>Transaction Id: <br /><span className='text-orange-500'>{order.transactionId}</span></p>
                                 </div> : <label onClick={() => setOrderId(order._id)} htmlFor="order-cancel-modal" className="btn modal-button btn-error btn-xs ml-2">Cancel</label>}
                             </Td>

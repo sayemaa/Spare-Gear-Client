@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import myImage from '../../assets/images/person.png'
 
 const Portfolio = () => {
     return (
         <div className='max-w-7xl mx-auto mb-24 mt-8'>
-            {/* <h2 className="text-4xl font-bold text-primary text-center my-8">Welcome to my Portfolio</h2> */}
-
             <div className="hero bg-base-100 mt-16 lg:mt-0 max-w-7xl mx-auto px-6 mb-20">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={myImage} className="max-w-sm rounded-lg w-full" alt="img" />
@@ -17,7 +14,6 @@ const Portfolio = () => {
                         <p className='text-lg'>
                             B.Sc. in Computer Science & Engineering <br /> East Delta University, Chittagong
                         </p>
-
                     </div>
                 </div>
             </div>
