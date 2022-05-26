@@ -10,6 +10,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile';
+import Payment from './Pages/Dashboard/Payment';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import RequireAdmin from './Pages/Login/RequireAdmin';
@@ -37,6 +38,7 @@ function App() {
                     <Route index element={<MyProfile />}></Route>
                     <Route path='myOrders' element={<MyOrders />}></Route>
                     <Route path='addReview' element={<AddReview />}></Route>
+                    <Route path='payment/:id' element={<Payment />}></Route>
 
                     <Route path='makeAdmin' element={<RequireAdmin><MakeAdmin /></RequireAdmin>}></Route>
                     <Route path='addProduct' element={<RequireAdmin><AddProduct /></RequireAdmin>}></Route>
