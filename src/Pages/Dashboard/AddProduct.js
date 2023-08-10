@@ -16,7 +16,7 @@ const AddProduct = () => {
             availableQuantity: data.availableQuantity
         }
 
-        fetch('https://enigmatic-tundra-01772.herokuapp.com/products', {
+        fetch('https://spare-gear-server.onrender.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

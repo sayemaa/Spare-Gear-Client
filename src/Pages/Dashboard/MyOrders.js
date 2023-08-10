@@ -15,7 +15,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`https://enigmatic-tundra-01772.herokuapp.com/orders?email=${user?.email}`, {
+            fetch(`https://spare-gear-server.onrender.com/orders?email=${user?.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const MyOrders = () => {
     }, [user, navigate, orders])
 
     const handleCancel = (id) => {
-        const url = `https://enigmatic-tundra-01772.herokuapp.com/orders/${id}`;
+        const url = `https://spare-gear-server.onrender.com/orders/${id}`;
         fetch(url, {
             method: 'DELETE',
         })

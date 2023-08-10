@@ -8,7 +8,7 @@ import ManageOrderCancelModal from './ManageOrderCancelModal';
 
 const ManageOrders = () => {
     const [orderId, setOrderId] = useState(null);
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://enigmatic-tundra-01772.herokuapp.com/allOrders', {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://spare-gear-server.onrender.com/allOrders', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -23,7 +23,7 @@ const ManageOrders = () => {
 
     const handleShipped = (id) => {
         const paid = false;
-        fetch(`https://enigmatic-tundra-01772.herokuapp.com/shipped/${id}`, {
+        fetch(`https://spare-gear-server.onrender.com/shipped/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ const ManageOrders = () => {
     }
 
     const handleCancel = (id) => {
-        const url = `https://enigmatic-tundra-01772.herokuapp.com/orders/${id}`;
+        const url = `https://spare-gear-server.onrender.com/orders/${id}`;
         fetch(url, {
             method: 'DELETE',
         })

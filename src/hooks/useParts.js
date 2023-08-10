@@ -4,7 +4,7 @@ const useParts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://enigmatic-tundra-01772.herokuapp.com/products')
+        fetch('https://spare-gear-server.onrender.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

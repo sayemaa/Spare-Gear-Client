@@ -17,7 +17,7 @@ const AddReview = () => {
             image: data.image
         }
 
-        fetch('https://enigmatic-tundra-01772.herokuapp.com/reviews', {
+        fetch('https://spare-gear-server.onrender.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

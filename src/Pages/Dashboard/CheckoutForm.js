@@ -13,7 +13,7 @@ const CheckoutForm = ({ order }) => {
     const { _id, totalPrice, name, email } = order;
 
     useEffect(() => {
-        fetch('https://enigmatic-tundra-01772.herokuapp.com/create-payment-intent', {
+        fetch('https://spare-gear-server.onrender.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -81,7 +81,7 @@ const CheckoutForm = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`https://enigmatic-tundra-01772.herokuapp.com/orders/${_id}`, {
+            fetch(`https://spare-gear-server.onrender.com/orders/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

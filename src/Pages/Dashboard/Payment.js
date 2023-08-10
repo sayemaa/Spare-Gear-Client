@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51L2K3EADgtfBsgR37n7N948OHnwAeutsuVix2
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `https://enigmatic-tundra-01772.herokuapp.com/orders/${id}`;
+    const url = `https://spare-gear-server.onrender.com/orders/${id}`;
 
     const { data: order, isLoading } = useQuery(['orders', id], () => fetch(url, {
         method: 'GET',
